@@ -20,8 +20,7 @@ public class TreeOutput {
 		for (int i = 0; i < level; i++)
 			System.out.print(" ");
 		if (file.isDirectory()) {
-			String dot = String.valueOf((char) 823);
-			System.out.println(dot + " " + file.getName().toUpperCase());
+			System.out.println("/" + file.getName().toUpperCase());
 		} else {
 			System.out.println(file.getName());
 		}
