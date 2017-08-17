@@ -11,7 +11,7 @@ public class TreeOutput {
 		try {
 			printTree(0, input);
 		} catch (IOException e) {
-			System.out.println("No such a directory:" + input);
+			System.out.println("Your input is not a valid directory:" + input);
 			e.printStackTrace();
 		}
 	}
@@ -19,13 +19,16 @@ public class TreeOutput {
 	static void printTree(int level, File file) throws IOException {
 		for (int i = 0; i < level; i++)
 			System.out.print(" ");
-		System.out.println(file.getName());
-
+		if (file.isDirectory()) {
+			System.out.println(file.getName().toUpperCase());
+		} else {
+			System.out.println(file.getName());
+		}
 		if (file.isDirectory()) {
 			File[] files = file.listFiles();
 			File[] sortedFiles = fileSorter(files);
 			for (int i = 0; i < sortedFiles.length; i++)
-				printTree(level + 5, sortedFiles[i]);
+				printTree(level + 3, sortedFiles[i]);
 		}
 	}
 
